@@ -1,24 +1,26 @@
-import java.util.Random;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TestFile {
-    private static String generateRandomName() {
-        StringBuilder stringBuilder = new StringBuilder();
+    static class ArmstrongNumbers {
 
-        for (int i = 0; i < 5; i++) {
-            Random random = new Random();
+        boolean isArmstrongNumber(int numberToCheck) {
+            int numberOfDigits = String.valueOf(numberToCheck).length();
+            int armstrongValue = 0;
+            int temp = numberToCheck;
 
-            if (i < 2)
-                stringBuilder.append((char) (random.nextInt(26) + 'A'));
-            else
-                stringBuilder.append(random.nextInt(10));
+            while (temp != 0) {
+                armstrongValue += Math.pow(temp % 10, numberOfDigits);
+                temp /= 10;
+            }
+
+            return armstrongValue == numberToCheck;
         }
-
-        return stringBuilder.toString();
     }
 
     public static void main(String[] args) {
-        String s = generateRandomName();
+        ArmstrongNumbers armstrongNumbers = new ArmstrongNumbers();
 
-        System.out.println(s);
+        System.out.println(armstrongNumbers.isArmstrongNumber(9474));
     }
 }
