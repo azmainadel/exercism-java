@@ -8,10 +8,15 @@ class RaindropConverter {
                 switch (i) {
                 case 3:
                     stringBuilder.append("Pling");
+                    break;
                 case 5:
                     stringBuilder.append("Plang");
+                    break;
                 case 7:
                     stringBuilder.append("Plong");
+                    break;
+                default:
+                    break;
                 }
             }
         }

@@ -2,25 +2,35 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TestFile {
-    static class ArmstrongNumbers {
+    static class RaindropConverter {
 
-        boolean isArmstrongNumber(int numberToCheck) {
-            int numberOfDigits = String.valueOf(numberToCheck).length();
-            int armstrongValue = 0;
-            int temp = numberToCheck;
-
-            while (temp != 0) {
-                armstrongValue += Math.pow(temp % 10, numberOfDigits);
-                temp /= 10;
+        static String convert(int number) {
+            StringBuilder stringBuilder = new StringBuilder();
+            for (int i = 1; i <= number; i++) {
+                if (number % i == 0) {
+                    switch (i) {
+                    case 3:
+                        stringBuilder.append("Pling");
+                        break;
+                    case 5:
+                        stringBuilder.append("Plang");
+                        break;
+                    case 7:
+                        stringBuilder.append("Plong");
+                        break;
+                    default:
+                        break;
+                    }
+                }
             }
-
-            return armstrongValue == numberToCheck;
+            if (stringBuilder.length() > 0)
+                return stringBuilder.toString();
+            else
+                return Integer.toString(number);
         }
     }
 
     public static void main(String[] args) {
-        ArmstrongNumbers armstrongNumbers = new ArmstrongNumbers();
-
-        System.out.println(armstrongNumbers.isArmstrongNumber(9474));
+        System.out.println(RaindropConverter.convert(6));
     }
 }
